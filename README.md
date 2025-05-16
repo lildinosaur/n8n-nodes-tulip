@@ -1,4 +1,4 @@
-# <img src="nodes/Imap/node-imap-icon.svg"  height="40"> n8n-nodes-tulip
+# <img src="nodes/Tulip/tulip.svg"  height="40"> n8n-nodes-tulip
 
 This is an n8n community node. It lets you use [Tulip](https://tulip.co) in your n8n workflows.
 
