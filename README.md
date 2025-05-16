@@ -1,46 +1,87 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# <img src="nodes/Imap/node-imap-icon.svg"  height="40"> n8n-nodes-tulip
 
-# n8n-nodes-starter
+This is an n8n community node. It lets you use [Tulip](https://tulip.co) in your n8n workflows.
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](n8n.io). It includes the node linter and other dependencies.
+[Installation](#installation)  
+[Operations](#operations)  
+[Credentials](#credentials)  
+[Compatibility](#compatibility)  
+[Usage](#usage)  
+[Resources](#resources)  
+[Version history](#version-history)
 
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
+## Installation
 
-## Prerequisites
+Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation.
 
-You need the following installed on your development machine:
+Use `n8n-nodes-tulip` in n8n settings to install the stable version.
 
-* [git](https://git-scm.com/downloads)
-* Node.js and pnpm. Minimum version Node 20. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
-  ```
-  npm install n8n -g
-  ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
+## Operations
 
-## Using this starter
+* Table
+  * List all tables
+  * Create a table
+  * Look up a table
+  * Update a table
+  * List records
+  * Create a records
+  * Delete all records
+  * Count records
+  * Look up a record
+  * Update a record
+  * Delete a record
+  * Increment or decrement a field in a Tulip Table record
+* Machine
+  * Set machine attribute value
+  * List all machines
 
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
+## Credentials
 
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
-   ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
-   ```
-3. Run `npm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `npm lint` to check for errors or `npm lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
+Tulip nodes uses Tulip API with basic authentication. You can find how to setup API authentication from the [Tulip](https://support.tulip.co/docs/setting-up-a-tulip-api) website.
 
-## More information
+- **Name**: Display name for the node instance in the editor.
+- **Factory URL**: For example, `your-factory-instance.tulip.co`
+- **API Key**: The API key for the API token. Should start with `apikey.2_`.
+- **API Secret**: The API secret for the API token.
 
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
+## Compatibility
 
-## License
+n8n-nodes-tulip is tested against the `r319.1` Tulip version and the `1.92.2` n8n version.
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+## Usage
+
+### Tulip Machine Attribute Node
+
+#### Prerequisites
+Before using a `tulip-machine-attribute` node, make sure that you have completed the following steps:
+
+1. Have machine monitoring enabled on your factory instance. This is required to use the Machine Attributes API.
+
+2. Follow the steps in [this support article](https://support.tulip.co/en/articles/5007794-how-to-use-the-machine-attributes-api) to:
+
+  - Configure an API token with `attributes:write` permissions
+  - Create a machine that uses the Tulip API as a datasource
+  - Define machine attributes for the machine
+
+#### Node Configuration
+
+- **Name**: Display name for the node instance in the editor
+- **Tulip Api Authentication**: A configuration node with authentication details for an API token on your Tulip account. The API token must have `attributes:write` permissions. See more details in the [Tulip API Auth Node](#tulip-api-auth-node) section.
+
+### Tulip Tables Node
+
+#### Overview
+
+The Tulip Tables API node supports sending data to and reading data from Tulip Tables, as well as reading Tulip Table metadata, using the Tulip Tables API.
+
+Each `tulip-tables` node is configured to send data to a single Tulip Tables API endpoint. On an input message, the node will send the configured request and output the HTTP response along with any returned data. The **Query Type** field determines the type of request, relevant parameters, and the response data type. See the Tulip Tables API documentation at `your-factory-instance.tulip.co/apiDocs` for more information on the different types of requests.
+
+#### Node Configuration
+
+- **Name**: Display name for the node instance in the editor
+- **Tulip Api Authentication**: A configuration node with authentication details for an API token on your Tulip account. The API token must have `tables:read` and `tables:write` permissions for read and write operations respectively. See more details in the [Tulip API Auth Node](#tulip-api-auth-node) section.
+
+## Resources
+
+* [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
+* [Tulip API documentation](https://support.tulip.co/docs/setting-up-a-tulip-api)

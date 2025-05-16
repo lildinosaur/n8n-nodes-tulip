@@ -1,0 +1,19 @@
+{
+	"node": "n8n-nodes-base.tulip",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Data & Storage"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://support.tulip.co/docs/setting-up-a-tulip-api"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://support.tulip.co/apidocs/introduction"
+			}
+		]
+	},
+	"alias": ["MES"]
+}

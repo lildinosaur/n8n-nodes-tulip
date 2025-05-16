@@ -1,19 +1,26 @@
 {
-  "name": "n8n-nodes-<...>",
+  "name": "n8n-nodes-tulip",
   "version": "0.1.0",
-  "description": "",
+  "description": "n8n nodes for sending data to the Tulip API",
   "keywords": [
-    "n8n-community-node-package"
-  ],
+		"n8n-community-node-package",
+		"tulip",
+		"tulip-interface",
+    "mes",
+		"tulip-node",
+		"tulip-n8n",
+		"tulip-n8n-node",
+		"tulip-n8n-node-package"
+	],
   "license": "MIT",
   "homepage": "",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Clément Fayard",
+    "email": "clementfayard@hotmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "https://github.com/lildinosaur/n8n-nodes-tulip.git"
   },
   "engines": {
     "node": ">=20.15"
@@ -33,12 +40,10 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
+      "dist/credentials/TulipApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/TulipTables/TulipTables.node.js"
     ]
   },
   "devDependencies": {
