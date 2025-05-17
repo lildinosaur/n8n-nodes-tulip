@@ -62,11 +62,6 @@ export const description: INodeProperties[] = [
 				action: 'Update a table',
 			},
 			{
-				name: 'Delete a Table',
-				value: 'deleteTable',
-				action: 'Delete a table',
-			},
-			{
 				name: 'Lookup a Table',
 				value: 'lookupTable',
 				description: 'Gets details about a Tulip Table\'s metadata and schema',
