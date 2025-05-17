@@ -1,3 +1,5 @@
+/* eslint-disable n8n-nodes-base/node-param-min-value-wrong-for-limit */
+/* eslint-disable n8n-nodes-base/node-param-default-wrong-for-limit */
 /* eslint-disable n8n-nodes-base/node-param-fixed-collection-type-unsorted-items */
 /* eslint-disable n8n-nodes-base/node-param-options-type-unsorted-items */
 import type { INodeProperties } from 'n8n-workflow';
@@ -38,7 +40,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['table'],
-				operation: ['createTable','updateTable'],
+				operation: ['updateTable'],
 			},
 		},
 	},
@@ -51,7 +53,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['table'],
-				operation: ['createTable','updateTable'],
+				operation: ['updateTable'],
 			},
 		},
 	},
@@ -66,7 +68,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 				show: {
 						resource: ['table'],
-						operation: ['createTable','updateTable'],
+						operation: ['updateTable'],
 				},
 		},
 		default: {},
@@ -198,12 +200,12 @@ export const description: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'any',
+				name: 'Any',
 				value: 'any',
 				action: 'any',
 			},
 			{
-				name: 'all',
+				name: 'All',
 				value: 'all',
 				action: 'all',
 			},

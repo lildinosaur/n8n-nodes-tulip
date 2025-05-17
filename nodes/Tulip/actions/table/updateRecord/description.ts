@@ -12,7 +12,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['table'],
-				operation: ['createTable'],
+				operation: ['updateRecord'],
 			},
 		},
 	},
@@ -25,7 +25,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['table'],
-				operation: ['createTable'],
+				operation: ['updateRecord'],
 			},
 		},
 	},
@@ -38,7 +38,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 			show: {
 				resource: ['table'],
-				operation: ['createTable','updateTable'],
+				operation: ['updateRecord'],
 			},
 		},
 	},
@@ -53,7 +53,7 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 				show: {
 						resource: ['table'],
-						operation: ['createTable','updateTable'],
+						operation: ['updateTable'],
 				},
 		},
 		default: {},
@@ -170,6 +170,5 @@ export const description: INodeProperties[] = [
 						],
 				},
 		],
-		description: 'The colection of columns to filter the query by',
 	},
 ];
