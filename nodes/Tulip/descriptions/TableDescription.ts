@@ -63,7 +63,7 @@ export const tableOperations: INodeProperties[] = [
 			},
 			{
 				name: 'Delete All Records',
-				value: 'deleteAllRecords',
+				value: 'deleteRecords',
 				action: 'Delete all record',
 			},
 			{
@@ -83,9 +83,8 @@ export const tableOperations: INodeProperties[] = [
 			},
 			{
 				name: 'Increment or Decrement a Field',
-				value: 'incrementDecrementRecord',
-				// eslint-disable-next-line n8n-nodes-base/node-param-operation-option-action-miscased
-				action: 'Increment or decrement a field in a Tulip Table record',
+				value: 'incrementDecrementField',
+				action: 'Increment or decrement a field in a tulip table record',
 				description: 'Increment or decrement an integer or float field of a Tulip Table Record',
 			},
 		],
@@ -584,88 +583,88 @@ export const tableFields: INodeProperties[] = [
 									type: 'options',
 									default: 'equal',
 									options: [
-										{
-											name: 'Equal',
-											value: 'equal',
-											action: 'equal',
-										},
-										{
-											name: 'Not equal',
-											value: 'notEqual',
-											action: 'all',
-										},
-										{
-											name: 'Equal',
-											value: 'equal',
-											action: 'equal',
-										},
-										{
-											name: 'Not equal',
-											value: 'notEqual',
-											action: 'all',
-										},
-										{
-											name: 'Equal',
-											value: 'equal',
-											action: 'equal',
-										},
-										{
-											name: 'Not equal',
-											value: 'notEqual',
-											action: 'all',
-										},
-										{
-											name: 'Equal',
-											value: 'equal',
-											action: 'equal',
-										},
-										{
-											name: 'Not equal',
-											value: 'notEqual',
-											action: 'all',
-										},
-										/*{
-											name: 'Equal',
-											value: 'equal',
-											action: 'equal',
-										},
-										{
-											name: 'Not equal',
-											value: 'notEqual',
-											action: 'all',
-										},
-										{
-											name: 'Equal',
-											value: 'equal',
-											action: 'equal',
-										},
-										{
-											name: 'Not equal',
-											value: 'notEqual',
-											action: 'all',
-										},
-										{
-											name: 'Equal',
-											value: 'equal',
-											action: 'equal',
-										},
-										{
-											name: 'Not equal',
-											value: 'notEqual',
-											action: 'all',
-										},
-										{
-											name: 'Equal',
-											value: 'equal',
-											action: 'equal',
-										},
-										{
-											name: 'Not equal',
-											value: 'notEqual',
-											action: 'all',
-										},*/
+											{
+													name: 'Equal',
+													value: 'equal',
+													description: 'Value equals the filter value',
+											},
+											{
+													name: 'Not Equal',
+													value: 'notEqual',
+													description: 'Value does not equal the filter value',
+											},
+											{
+													name: 'Blank',
+													value: 'blank',
+													description: 'Value is empty or null',
+											},
+											{
+													name: 'Not Blank',
+													value: 'notBlank',
+													description: 'Value is not empty and not null',
+											},
+											{
+													name: 'Greater Than or Equal',
+													value: 'greaterThanOrEqual',
+													description: 'Value is greater than or equal to the filter value',
+											},
+											{
+													name: 'Less Than or Equal',
+													value: 'lessThanOrEqual',
+													description: 'Value is less than or equal to the filter value',
+											},
+											{
+													name: 'Greater Than',
+													value: 'greaterThan',
+													description: 'Value is greater than the filter value',
+											},
+											{
+													name: 'Less Than',
+													value: 'lessThan',
+													description: 'Value is less than the filter value',
+											},
+											{
+													name: 'Contains',
+													value: 'contains',
+													description: 'Value contains the filter value',
+											},
+											{
+													name: 'Does Not Contain',
+													value: 'notContains',
+													description: 'Value does not contain the filter value',
+											},
+											{
+													name: 'Starts With',
+													value: 'startsWith',
+													description: 'Value starts with the filter value',
+											},
+											{
+													name: 'Does Not Start With',
+													value: 'notStartsWith',
+													description: 'Value does not start with the filter value',
+											},
+											{
+													name: 'Ends With',
+													value: 'endsWith',
+													description: 'Value ends with the filter value',
+											},
+											{
+													name: 'Does Not End With',
+													value: 'notEndsWith',
+													description: 'Value does not end with the filter value',
+											},
+											{
+													name: 'Is In List',
+													value: 'isIn',
+													description: 'Value is in the list of filter values',
+											},
+											{
+													name: 'Is Not In List',
+													value: 'notIsIn',
+													description: 'Value is not in the list of filter values',
+											},
 									],
-									description: 'How the filters in the filters parameter are combined. all means that every filter must match a record in order for the record to be included. any means at least one filter must match a record in order for the record to be included.',
+									description: 'The comparison operator to use for filtering',
 								},
 								{
 										displayName: 'Value',

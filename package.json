@@ -3,15 +3,15 @@
   "version": "0.1.0",
   "description": "n8n nodes for sending data to the Tulip API",
   "keywords": [
-		"n8n-community-node-package",
-		"tulip",
-		"tulip-interface",
+    "n8n-community-node-package",
+    "tulip",
+    "tulip-interface",
     "mes",
-		"tulip-node",
-		"tulip-n8n",
-		"tulip-n8n-node",
-		"tulip-n8n-node-package"
-	],
+    "tulip-node",
+    "tulip-n8n",
+    "tulip-n8n-node",
+    "tulip-n8n-node-package"
+  ],
   "license": "MIT",
   "homepage": "",
   "author": {
