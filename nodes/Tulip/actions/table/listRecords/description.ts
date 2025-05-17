@@ -1,3 +1,5 @@
+/* eslint-disable n8n-nodes-base/node-param-min-value-wrong-for-limit */
+/* eslint-disable n8n-nodes-base/node-param-default-wrong-for-limit */
 /* eslint-disable n8n-nodes-base/node-param-fixed-collection-type-unsorted-items */
 /* eslint-disable n8n-nodes-base/node-param-options-type-unsorted-items */
 import type { INodeProperties } from 'n8n-workflow';
@@ -284,5 +286,64 @@ export const description: INodeProperties[] = [
 				},
 		],
 		description: 'The columns and values to create in the record',
+	},
+	{
+		displayName: 'Filter aggregator',
+		name: 'filterAggregator',
+		type: 'options',
+		default: 'all',
+		displayOptions: {
+				show: {
+						resource: ['table'],
+						operation: ['listRecords'],
+				},
+		},
+		options: [
+			{
+				name: 'Any',
+				value: 'any',
+				action: 'any',
+			},
+			{
+				name: 'All',
+				value: 'all',
+				action: 'all',
+			},
+		],
+		description: 'How the filters in the filters parameter are combined. all means that every filter must match a record in order for the record to be included. any means at least one filter must match a record in order for the record to be included.',
+	},
+	{
+		displayName: 'Limit',
+		name: 'limit',
+		type: 'number',
+		default: 10,
+    typeOptions: {
+			minValue: 0,
+    },
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['table'],
+				operation: ['listRecords'],
+			},
+		},
+		description: 'Max number of results to return',
+	},
+	{
+		displayName: 'Offset',
+		name: 'offset',
+		type: 'number',
+		default: 0,
+    typeOptions: {
+			minValue: 0,
+    },
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['table'],
+				operation: ['listRecords'],
+			},
+		},
+		description: 'Offset of results to return',
 	},
 ];
