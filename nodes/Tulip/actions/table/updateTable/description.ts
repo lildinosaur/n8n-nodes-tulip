@@ -21,6 +21,7 @@ export const description: INodeProperties[] = [
 	{
 		displayName: 'Deleted',
 		name: 'deleted',
+		description: 'Whether the Table should be hidden from the Tulip Tables UI. If not specified, the Table\'s deleted status is unchanged.',
 		type: 'boolean',
 		default: false,
 		required: true,
