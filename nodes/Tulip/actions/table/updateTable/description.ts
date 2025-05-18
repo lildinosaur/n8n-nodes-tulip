@@ -71,15 +71,26 @@ export const description: INodeProperties[] = [
 						operation: ['updateTable'],
 				},
 		},
-		default: {},
-		placeholder: 'Add Field',
+		default: {
+			columnValues: [
+					{
+							columnName: 'id',
+							label: 'ID',
+							description: 'Primary identifier for the table',
+							dataType: 'text',
+							hidden: false,
+							unique: true,
+					},
+			],
+		},
+		placeholder: 'Add Column',
 		options: [
 				{
 						name: 'columnValues',
 						displayName: 'Column',
 						values: [
 								{
-									displayName: 'Column Name',
+									displayName: 'Column ID',
 									name: 'columnName',
 									type: 'string',
 									default: '',
@@ -104,7 +115,7 @@ export const description: INodeProperties[] = [
 								},
 								{
 									displayName: 'Data Type',
-									name: 'dateType',
+									name: 'dataType',
 									type: 'options',
 									default: 'text',
 									description: '<a href="https://support.tulip.co/docs/data-types-in-tulip">Data Type</a> of the column in the table',
@@ -185,6 +196,6 @@ export const description: INodeProperties[] = [
 						],
 				},
 		],
-		description: 'The colection of columns to filter the query by',
+		description: 'The spec for updating a Tulip Table. The spec must include all existing columns of the Table, including the ID column. The data type of existing columns cannot be changed. If you wish to change a column\'s type, hide the existing column and make a new column with the desired type',
 	},
 ];

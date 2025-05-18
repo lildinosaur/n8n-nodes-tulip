@@ -4,6 +4,15 @@ import { apiRequest } from '../../../transport';
 
 export async function execute(this: IExecuteFunctions, index: number): Promise<INodeExecutionData[]> {
 	const tableId = this.getNodeParameter('tableId', index) as string;
+	const filters = this.getNodeParameter('filters.filterValues', index, []) as Array<{
+		columnName: string;
+		filterFunction: string;
+		columnValue: string;
+	}>;
+	const sortOptions = this.getNodeParameter('sortOptions.sortValues', index, []) as Array<{
+		columnName: string;
+		sortOrder: string;
+	}>;
 	const body = {} as IDataObject;
 	const qs = {} as IDataObject;
 	const requestMethod = 'GET';
@@ -14,13 +23,22 @@ export async function execute(this: IExecuteFunctions, index: number): Promise<I
 	qs.includeTotalCount = this.getNodeParameter('includeTotalCount', index) as boolean;
 	qs.filterAggregator = this.getNodeParameter('filterAggregator', index) as string;
 
-	// url query strings value example :
-	// ?limit=10
-	// &offset=0
-	// &includeTotalCount=true
-	// &filters=%5B%7B%22field%22%3A%22string%22%2C%22functionType%22%3A%22equal%22%2C%22arg%22%3A%22string%22%7D%5D
-	// &filterAggregator=all
-	// &sortOptions=%5B%7B%22sortBy%22%3A%22Color%22%2C%22sortDir%22%3A%22asc%22%7D%5D' \
+	if (filters.length > 0) {
+		const formattedFilters = filters.map(filter => ({
+				field: filter.columnName,
+				functionType: filter.filterFunction,
+				arg: filter.columnValue,
+		}));
+		qs.filters = JSON.stringify(formattedFilters);
+	}
+
+	if (sortOptions.length > 0) {
+		const formattedSortOptions = sortOptions.map(filter => ({
+				sortBy: filter.columnName,
+				sortDir: filter.sortOrder,
+		}));
+		qs.sortOptions = JSON.stringify(formattedSortOptions);
+	}
 
 	const responseData = await apiRequest.call(this, requestMethod, endpoint, body, qs);
 

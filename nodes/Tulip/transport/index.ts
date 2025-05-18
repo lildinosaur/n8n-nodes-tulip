@@ -26,9 +26,9 @@ export async function apiRequest(
 		headers: {
 			'content-type': 'application/json; charset=utf-8',
 		},
-		skipSslCertificateValidation: credentials.allowUnauthorizedCerts as boolean,
 		json: true,
+		returnFullResponse: true,
 	};
 
-	return await this.helpers.httpRequestWithAuthentication.call(this, 'tulipApi', options);
+	return await this.helpers.requestWithAuthentication.call(this, 'tulipApi', options);
 }

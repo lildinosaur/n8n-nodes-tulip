@@ -14,7 +14,7 @@ import * as deleteRecords from './deleteRecords';
 import * as createRecord from './createRecord';
 import * as countRecords from './countRecords';
 import * as lookupRecord from './lookupRecord';
-import * as incrementDecrementRecord from './incrementDecrementRecord';
+import * as incrementDecrementField from './incrementDecrementField';
 import * as deleteRecord from './deleteRecord';
 import * as updateRecord from './updateRecord';
 
@@ -28,7 +28,7 @@ export {
 	, createRecord
 	, countRecords
 	, lookupRecord
-	, incrementDecrementRecord
+	, incrementDecrementField
 	, deleteRecord
 	, updateRecord
 };
@@ -84,7 +84,7 @@ export const description: INodeProperties[] = [
 			},
 			{
 				name: 'Delete All Records',
-				value: 'deleteAllRecords',
+				value: 'deleteRecords',
 				action: 'Delete all record',
 			},
 			{
@@ -104,7 +104,7 @@ export const description: INodeProperties[] = [
 			},
 			{
 				name: 'Increment or Decrement a Field',
-				value: 'incrementDecrementRecord',
+				value: 'incrementDecrementField',
 				action: 'Increment or decrement a field in a tulip table record',
 				description: 'Increment or decrement an integer or float field of a Tulip Table Record',
 			},
@@ -119,7 +119,7 @@ export const description: INodeProperties[] = [
 	...createRecord.description,
 	...countRecords.description,
 	...lookupRecord.description,
-	...incrementDecrementRecord.description,
+	...incrementDecrementField.description,
 	...deleteRecord.description,
 	...updateRecord.description,
 ];

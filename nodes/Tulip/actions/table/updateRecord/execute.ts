@@ -14,12 +14,10 @@ export async function execute(this: IExecuteFunctions, index: number): Promise<I
 	const endpoint = `tables/${tableId}/records/${recordId}`;
 
 	// Transform columns array into object
-	const recordData = columns.reduce((obj, item) => {
+	const body = columns.reduce((obj, item) => {
 			obj[item.columnName] = item.columnValue;
 			return obj;
 	}, {} as Record<string, string>);
-
-	const body = recordData;
 
 	const responseData = await apiRequest.call(this, requestMethod, endpoint, body, qs);
 

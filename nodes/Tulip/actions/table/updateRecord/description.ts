@@ -17,21 +17,8 @@ export const description: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Label',
-		name: 'tableLabel',
-		type: 'string',
-		default: '',
-		required: true,
-		displayOptions: {
-			show: {
-				resource: ['table'],
-				operation: ['updateRecord'],
-			},
-		},
-	},
-	{
-		displayName: 'Description',
-		name: 'description',
+		displayName: 'Record ID',
+		name: 'recordId',
 		type: 'string',
 		default: '',
 		required: true,
@@ -53,18 +40,18 @@ export const description: INodeProperties[] = [
 		displayOptions: {
 				show: {
 						resource: ['table'],
-						operation: ['updateTable'],
+						operation: ['updateRecord'],
 				},
 		},
 		default: {},
-		placeholder: 'Add Field',
+		placeholder: 'Add Column',
 		options: [
 				{
 						name: 'columnValues',
 						displayName: 'Column',
 						values: [
 								{
-									displayName: 'Column Name',
+									displayName: 'Column ID',
 									name: 'columnName',
 									type: 'string',
 									default: '',
@@ -72,99 +59,10 @@ export const description: INodeProperties[] = [
 									required: true,
 								},
 								{
-									displayName: 'Label',
-									name: 'label',
+									displayName: 'Value',
+									name: 'columnValue',
 									type: 'string',
 									default: '',
-									description: '<a href="https://support.tulip.co/docs/an-overview-of-tables">Label</a> of the table',
-									required: true,
-								},
-								{
-									displayName: 'Description',
-									name: 'description',
-									type: 'string',
-									default: '',
-									description: '<a href="https://support.tulip.co/docs/an-overview-of-tables">Description</a> of the table',
-									required: true,
-								},
-								{
-									displayName: 'Data Type',
-									name: 'dateType',
-									type: 'options',
-									default: 'text',
-									description: '<a href="https://support.tulip.co/docs/data-types-in-tulip">Data Type</a> of the column in the table',
-									required: true,
-									options: [
-										{
-											name: 'Text',
-											value: 'text',
-										},
-										{
-											name: 'Number',
-											value: 'number',
-										},
-										{
-											name: 'Datetime',
-											value: 'datetime',
-										},
-										{
-											name: 'Boolean',
-											value: 'boolean',
-										},
-										{
-											name: 'Interval',
-											value: 'interval',
-										},
-										{
-											name: 'File',
-											value: 'file',
-										},
-										{
-											name: 'Image',
-											value: 'image',
-										},
-										{
-											name: 'Video',
-											value: 'video',
-										},
-										{
-											name: 'Audio',
-											value: 'audio',
-										},
-										{
-											name: 'Color',
-											value: 'color',
-										},
-										{
-											name: 'User',
-											value: 'user',
-										},
-										{
-											name: 'Machine',
-											value: 'machine',
-										},
-										{
-											name: 'Station',
-											value: 'station',
-										},
-										{
-											name: 'Linked Record',
-											value: 'linkedRecord',
-										},
-									],
-								},
-								{
-									displayName: 'Hidden',
-									name: 'hidden',
-									type: 'boolean',
-									default: false,
-									required: true,
-								},
-								{
-									displayName: 'Unique',
-									name: 'unique',
-									type: 'boolean',
-									default: false,
 									required: true,
 								},
 						],

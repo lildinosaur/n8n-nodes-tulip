@@ -13,7 +13,7 @@ type TulipMap = {
 		| 'listRecords'
 		| 'deleteRecord'
 		| 'deleteRecords'
-		| 'incrementDecrementRecord';
+		| 'incrementDecrementField';
 	machine: 'listMachines' | 'setMachineAttribute';
 };
 

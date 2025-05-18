@@ -1,3 +1,4 @@
+/* eslint-disable n8n-nodes-base/node-param-description-boolean-without-whether */
 /* eslint-disable n8n-nodes-base/node-param-min-value-wrong-for-limit */
 /* eslint-disable n8n-nodes-base/node-param-default-wrong-for-limit */
 /* eslint-disable n8n-nodes-base/node-param-fixed-collection-type-unsorted-items */
@@ -30,79 +31,41 @@ export const description: INodeProperties[] = [
 				operation: ['listRecords'],
 			},
 		},
+		description: 'If this flag is set, the total number of records in the Table which match the filters is returned in the X-Total-Count header in the response. Determining this count requires an extra (potentially expensive) database query, so clients should omit this flag if the total count is not needed.',
 	},
 	{
-		displayName: 'Sort By',
-		name: 'sortBy',
-		type: 'options',
-		default: 'sequenceNumber',
-		displayOptions: {
-				show: {
-						resource: ['table'],
-						operation: ['listRecords'],
-				},
-		},
-		options: [
-			{
-				name: 'Sequence Number',
-				value: 'sequenceNumber',
-				action: 'sequenceNumber',
-			},
-			{
-				name: 'Updated At',
-				value: 'updatedAt',
-				action: 'updatedAt',
-			},
-			{
-				name: 'Created At',
-				value: 'createdAt',
-				action: 'createdAt',
-			},
-			{
-				name: 'Custom Field',
-				value: 'custom',
-				description: 'Sort by a custom table field',
-			},
-		],
-	},
-	{
-    displayName: 'Custom Sort Field',
-    name: 'customSortField',
-    type: 'string',
-    default: '',
-    displayOptions: {
-        show: {
-            resource: ['table'],
-            operation: ['listRecords'],
-            sortBy: ['custom'],
-        },
+		displayName: 'Limit',
+		name: 'limit',
+		type: 'number',
+		default: 10,
+    typeOptions: {
+			minValue: 0,
     },
-    placeholder: 'Enter field name',
-    description: 'Name of the table field to sort by',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['table'],
+				operation: ['listRecords'],
+			},
+		},
+		description: 'Max number of results to return',
 	},
 	{
-		displayName: 'Sort Direction',
-		name: 'sortOrder',
-		type: 'options',
-		default: 'ascending',
+		displayName: 'Offset',
+		name: 'offset',
+		type: 'number',
+		default: 0,
+    typeOptions: {
+			minValue: 0,
+    },
+		required: true,
 		displayOptions: {
-				show: {
-						resource: ['table'],
-						operation: ['listRecords'],
-				},
+			show: {
+				resource: ['table'],
+				operation: ['listRecords'],
+			},
 		},
-		options: [
-			{
-				name: 'Ascending',
-				value: 'ascending',
-				action: 'ascending',
-			},
-			{
-				name: 'Descending',
-				value: 'descending',
-				action: 'descending',
-			},
-		],
+		description: 'Offset of results to return',
 	},
 	{
 		displayName: 'Sort Options',
@@ -157,7 +120,7 @@ export const description: INodeProperties[] = [
 		description: 'The columns and values to create in the record',
 	},
 	{
-		displayName: 'Filter',
+		displayName: 'Filters',
 		name: 'filters',
 		type: 'fixedCollection',
 		typeOptions: {
@@ -311,39 +274,5 @@ export const description: INodeProperties[] = [
 			},
 		],
 		description: 'How the filters in the filters parameter are combined. all means that every filter must match a record in order for the record to be included. any means at least one filter must match a record in order for the record to be included.',
-	},
-	{
-		displayName: 'Limit',
-		name: 'limit',
-		type: 'number',
-		default: 10,
-    typeOptions: {
-			minValue: 0,
-    },
-		required: true,
-		displayOptions: {
-			show: {
-				resource: ['table'],
-				operation: ['listRecords'],
-			},
-		},
-		description: 'Max number of results to return',
-	},
-	{
-		displayName: 'Offset',
-		name: 'offset',
-		type: 'number',
-		default: 0,
-    typeOptions: {
-			minValue: 0,
-    },
-		required: true,
-		displayOptions: {
-			show: {
-				resource: ['table'],
-				operation: ['listRecords'],
-			},
-		},
-		description: 'Offset of results to return',
 	},
 ];
