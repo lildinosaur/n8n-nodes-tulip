@@ -58,7 +58,7 @@ export const description: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Colmumns',
+		displayName: 'Columns',
 		name: 'columns',
 		type: 'fixedCollection',
 		typeOptions: {
