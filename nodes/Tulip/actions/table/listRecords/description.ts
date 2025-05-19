@@ -244,6 +244,11 @@ export const description: INodeProperties[] = [
 										default: '',
 										description: 'Value to set for this column',
 										required: true,
+										displayOptions: {
+											hide: {
+												filterFunction: ['notBlank','blank'],
+											},
+									},
 								},
 						],
 				},

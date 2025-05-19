@@ -118,21 +118,25 @@ export const description: INodeProperties[] = [
 									displayName: 'Data Type',
 									name: 'dataType',
 									type: 'options',
-									default: 'text',
+									default: 'string',
 									description: '<a href="https://support.tulip.co/docs/data-types-in-tulip">Data Type</a> of the column in the table',
 									required: true,
 									options: [
 										{
 											name: 'Text',
-											value: 'text',
+											value: 'string',
 										},
 										{
 											name: 'Number',
-											value: 'number',
+											value: 'float',
+										},
+										{
+											name: 'Integer',
+											value: 'integer',
 										},
 										{
 											name: 'Datetime',
-											value: 'datetime',
+											value: 'timestamp',
 										},
 										{
 											name: 'Boolean',
@@ -143,20 +147,8 @@ export const description: INodeProperties[] = [
 											value: 'interval',
 										},
 										{
-											name: 'File',
-											value: 'file',
-										},
-										{
 											name: 'Image',
-											value: 'image',
-										},
-										{
-											name: 'Video',
-											value: 'video',
-										},
-										{
-											name: 'Audio',
-											value: 'audio',
+											value: 'imageUrl',
 										},
 										{
 											name: 'Color',
@@ -165,6 +157,10 @@ export const description: INodeProperties[] = [
 										{
 											name: 'User',
 											value: 'user',
+										},
+										{
+											name: 'File (File/Video)',
+											value: 'fileUrl',
 										},
 										{
 											name: 'Machine',
