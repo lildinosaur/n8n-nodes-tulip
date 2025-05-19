@@ -4,10 +4,10 @@ import type { INodeProperties } from 'n8n-workflow';
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Machine ID',
-		description: 'The ID of the machine to write the attribute value to. Specify an ID from the Tulip machine <a href="https://support.tulip.co/docs/how-to-use-the-machine-attributes-api">page</a>.',
+		displayName: 'Machine Name or ID',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 		name: 'machineId',
-		type: 'string',
+		type: 'options',
 		default: '',
 		required: true,
 		displayOptions: {
@@ -15,6 +15,9 @@ export const description: INodeProperties[] = [
 				resource: ['machine'],
 				operation: ['setMachineAttribute'],
 			},
+		},
+		typeOptions: {
+			loadOptionsMethod: 'getMachines',
 		},
 	},
 	{

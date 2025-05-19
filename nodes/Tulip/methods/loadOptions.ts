@@ -95,3 +95,36 @@ export async function getRecordsIDs(this: ILoadOptionsFunctions): Promise<INodeP
 
 	return returnData;
 }
+
+export async function getMachines(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
+	const endpoint = 'machines';
+	const responseData = await apiRequest.call(this, 'GET', endpoint, {});
+	const returnData: INodePropertyOptions[] = [];
+
+	if (responseData === undefined) {
+			throw new NodeOperationError(this.getNode(), 'No data got returned');
+	}
+
+	for (const group of responseData) {
+			if (group.machines && Array.isArray(group.machines)) {
+					for (const machine of group.machines) {
+							returnData.push({
+									name: machine.name as string,
+									value: machine.id as string,
+							});
+					}
+			}
+	}
+
+	returnData.sort((a, b) => {
+			if (a.name < b.name) {
+					return -1;
+			}
+			if (a.name > b.name) {
+					return 1;
+			}
+			return 0;
+	});
+
+	return returnData;
+}
