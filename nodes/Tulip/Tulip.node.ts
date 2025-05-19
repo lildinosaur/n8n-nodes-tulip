@@ -7,6 +7,7 @@ import type {
 import { NodeConnectionType } from 'n8n-workflow';
 
 import { router } from './actions/router';
+import { loadOptions } from './methods';
 import * as table from './actions/table';
 import * as machine from './actions/machine';
 
@@ -54,6 +55,8 @@ export class Tulip implements INodeType {
 			...machine.description,
 		],
 	}
+
+	methods = { loadOptions };
 
 	async execute(this: IExecuteFunctions) {
 		return await router.call(this);

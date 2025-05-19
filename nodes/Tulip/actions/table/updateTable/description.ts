@@ -6,9 +6,10 @@ import type { INodeProperties } from 'n8n-workflow';
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Table ID',
+		displayName: 'Table Name or ID',
 		name: 'tableId',
-		type: 'string',
+		type: 'options',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 		default: '',
 		required: true,
 		displayOptions: {
@@ -16,6 +17,9 @@ export const description: INodeProperties[] = [
 				resource: ['table'],
 				operation: ['updateTable'],
 			},
+		},
+		typeOptions: {
+			loadOptionsMethod: 'getTables',
 		},
 	},
 	{
@@ -91,12 +95,16 @@ export const description: INodeProperties[] = [
 						displayName: 'Column',
 						values: [
 								{
-									displayName: 'Column ID',
+									displayName: 'Column Name or ID',
 									name: 'columnName',
-									type: 'string',
+									type: 'options',
+									description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 									default: '',
-									description: '<a href="https://support.tulip.co/docs/an-overview-of-tables">Name</a> of the table',
 									required: true,
+									typeOptions: {
+										loadOptionsMethod: 'getColumns',
+										loadOptionsDependsOn: ['tableId'],
+									},
 								},
 								{
 									displayName: 'Label',

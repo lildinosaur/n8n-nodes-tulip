@@ -4,9 +4,10 @@ import type { INodeProperties } from 'n8n-workflow';
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Table ID',
+		displayName: 'Table Name or ID',
 		name: 'tableId',
-		type: 'string',
+		type: 'options',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 		default: '',
 		required: true,
 		displayOptions: {
@@ -15,11 +16,15 @@ export const description: INodeProperties[] = [
 				operation: ['lookupRecord'],
 			},
 		},
+		typeOptions: {
+			loadOptionsMethod: 'getTables',
+		},
 	},
 	{
-		displayName: 'Record ID',
+		displayName: 'Record Name or ID',
 		name: 'recordId',
-		type: 'string',
+		type: 'options',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 		default: '',
 		required: true,
 		displayOptions: {
@@ -27,6 +32,10 @@ export const description: INodeProperties[] = [
 				resource: ['table'],
 				operation: ['lookupRecord'],
 			},
+		},
+		typeOptions: {
+			loadOptionsMethod: 'getRecordsIDs',
+			loadOptionsDependsOn: ['tableId'],
 		},
 	},
 	{
@@ -50,14 +59,18 @@ export const description: INodeProperties[] = [
 						name: 'columnValues',
 						displayName: 'Column',
 						values: [
-								{
-										displayName: 'Column Name (ID)',
-										name: 'columnName',
-										type: 'string',
-										default: '',
-										description: 'ID of the column in the table',
-										required: true,
+							{
+								displayName: 'Column Name or ID',
+								name: 'columnName',
+								type: 'options',
+								description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+								default: '',
+								required: true,
+								typeOptions: {
+									loadOptionsMethod: 'getColumns',
+									loadOptionsDependsOn: ['tableId'],
 								},
+							},
 						],
 				},
 		],

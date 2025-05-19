@@ -7,9 +7,10 @@ import type { INodeProperties } from 'n8n-workflow';
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Table ID',
+		displayName: 'Table Name or ID',
 		name: 'tableId',
-		type: 'string',
+		type: 'options',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 		default: '',
 		required: true,
 		displayOptions: {
@@ -17,6 +18,9 @@ export const description: INodeProperties[] = [
 				resource: ['table'],
 				operation: ['listRecords'],
 			},
+		},
+		typeOptions: {
+			loadOptionsMethod: 'getTables',
 		},
 	},
 	{
@@ -89,12 +93,16 @@ export const description: INodeProperties[] = [
 						displayName: 'Sort',
 						values: [
 								{
-										displayName: 'Column Name (ID)',
-										name: 'columnName',
-										type: 'string',
-										default: '',
-										description: 'ID of the column in the table',
-										required: true,
+									displayName: 'Column Name or ID',
+									name: 'columnName',
+									type: 'options',
+									description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+									default: '',
+									required: true,
+									typeOptions: {
+										loadOptionsMethod: 'getColumns',
+										loadOptionsDependsOn: ['tableId'],
+									},
 								},
 								{
 									displayName: 'Sort Direction',
@@ -141,12 +149,16 @@ export const description: INodeProperties[] = [
 						displayName: 'Filter',
 						values: [
 								{
-										displayName: 'Column Name (ID)',
-										name: 'columnName',
-										type: 'string',
-										default: '',
-										description: 'ID of the column in the table',
-										required: true,
+									displayName: 'Column Name or ID',
+									name: 'columnName',
+									type: 'options',
+									description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+									default: '',
+									required: true,
+									typeOptions: {
+										loadOptionsMethod: 'getColumns',
+										loadOptionsDependsOn: ['tableId'],
+									},
 								},
 								{
 									displayName: 'Function',
