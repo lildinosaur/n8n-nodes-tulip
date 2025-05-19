@@ -82,7 +82,7 @@ export const description: INodeProperties[] = [
 							columnName: 'id',
 							label: 'ID',
 							description: 'Primary identifier for the table',
-							dataType: 'text',
+							dataType: 'string',
 							hidden: false,
 							unique: true,
 					},
