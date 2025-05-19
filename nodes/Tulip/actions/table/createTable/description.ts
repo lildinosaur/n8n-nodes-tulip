@@ -76,7 +76,7 @@ export const description: INodeProperties[] = [
 								},
 								{
 									displayName: 'Data Type',
-									name: 'dateType',
+									name: 'dataType',
 									type: 'options',
 									default: 'string',
 									description: '<a href="https://support.tulip.co/docs/data-types-in-tulip">Data Type</a> of the column in the table',
