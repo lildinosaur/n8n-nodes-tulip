@@ -6,7 +6,9 @@ import type {
 	IDataObject,
 	IHttpRequestMethods,
 	IRequestOptions,
+	JsonObject,
 } from 'n8n-workflow';
+import { NodeApiError } from 'n8n-workflow';
 
 export async function apiRequest(
 	this: IHookFunctions | IExecuteFunctions | ILoadOptionsFunctions,
@@ -31,5 +33,9 @@ export async function apiRequest(
 		resolveWithFullResponse: resolveWithFullResponse,
 	};
 
-	return await this.helpers.requestWithAuthentication.call(this, 'tulipApi', options);
+	try {
+		return await this.helpers.requestWithAuthentication.call(this, 'tulipApi', options);
+	} catch (error) {
+		throw new NodeApiError(this.getNode(), error as JsonObject);
+	}
 }
