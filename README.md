@@ -53,7 +53,7 @@ n8n-nodes-tulip is tested against the `r319.1` Tulip version and the `1.92.2` n8
 ### Tulip Machine Attribute Node
 
 #### Prerequisites
-Before using a `tulip-machine-attribute` node, make sure that you have completed the following steps:
+Before using a `machine` node, make sure that you have completed the following steps:
 
 1. Have machine monitoring enabled on your factory instance. This is required to use the Machine Attributes API.
 
@@ -74,7 +74,7 @@ Before using a `tulip-machine-attribute` node, make sure that you have completed
 
 The Tulip Tables API node supports sending data to and reading data from Tulip Tables, as well as reading Tulip Table metadata, using the Tulip Tables API.
 
-Each `tulip-tables` node is configured to send data to a single Tulip Tables API endpoint. On an input message, the node will send the configured request and output the HTTP response along with any returned data. The **Query Type** field determines the type of request, relevant parameters, and the response data type. See the Tulip Tables API documentation at `your-factory-instance.tulip.co/apiDocs` for more information on the different types of requests.
+Each `tables` node is configured to send data to a single Tulip Tables API endpoint. On an input message, the node will send the configured request and output the HTTP response along with any returned data. The **Query Type** field determines the type of request, relevant parameters, and the response data type. See the Tulip Tables API documentation at `your-factory-instance.tulip.co/apiDocs` for more information on the different types of requests.
 
 #### Node Configuration
 
