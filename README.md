@@ -1,3 +1,5 @@
+![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+
 # <img src="nodes/Tulip/tulip.svg"  height="40"> n8n-nodes-tulip
 
 This is an n8n community node. It lets you use [Tulip](https://tulip.co) in your n8n workflows.
