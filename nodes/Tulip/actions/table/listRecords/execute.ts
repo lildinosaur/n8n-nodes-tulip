@@ -16,6 +16,7 @@ export async function execute(this: IExecuteFunctions, index: number): Promise<I
 	const body = {} as IDataObject;
 	const qs = {} as IDataObject;
 	const requestMethod = 'GET';
+	const resolveWithFullResponse = true;
 	const endpoint = `tables/${tableId}/records`;
 
 	qs.limit = this.getNodeParameter('limit', index) as number;
@@ -40,7 +41,17 @@ export async function execute(this: IExecuteFunctions, index: number): Promise<I
 		qs.sortOptions = JSON.stringify(formattedSortOptions);
 	}
 
-	const responseData = await apiRequest.call(this, requestMethod, endpoint, body, qs);
+	//Get the full response because we need to get the 'X-Total-Count' header value if we passed includeTotalCount=true in the query string
+	const responseData = await apiRequest.call(this, requestMethod, endpoint, body, qs, resolveWithFullResponse);
 
-	return this.helpers.returnJsonArray(responseData as IDataObject[]);
+	// Get the total count from headers
+	const totalCount = responseData.headers['x-total-count'];
+
+	// Add totalCount to each record if headers contain the count
+	const records = (responseData.body as IDataObject[]).map(record => ({
+			...record,
+			total_count: totalCount ? parseInt(totalCount as string, 10) : undefined,
+	}));
+
+	return this.helpers.returnJsonArray(records as IDataObject[]);
 }

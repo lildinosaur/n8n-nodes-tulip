@@ -5,7 +5,7 @@ import type {
 	GenericValue,
 	IDataObject,
 	IHttpRequestMethods,
-	IHttpRequestOptions,
+	IRequestOptions,
 } from 'n8n-workflow';
 
 export async function apiRequest(
@@ -14,11 +14,12 @@ export async function apiRequest(
 	endpoint: string,
 	body: IDataObject | GenericValue | GenericValue[] = {},
 	query: IDataObject = {},
+	resolveWithFullResponse: boolean = false,
 ) {
 	const credentials = await this.getCredentials('tulipApi');
 	const baseUrl = (credentials.factoryUrl as string).replace(/\/$/, '');
 
-	const options: IHttpRequestOptions = {
+	const options: IRequestOptions = {
 		method,
 		body,
 		qs: query,
@@ -27,7 +28,7 @@ export async function apiRequest(
 			'content-type': 'application/json; charset=utf-8',
 		},
 		json: true,
-		returnFullResponse: true,
+		resolveWithFullResponse: resolveWithFullResponse,
 	};
 
 	return await this.helpers.requestWithAuthentication.call(this, 'tulipApi', options);
