@@ -6,9 +6,7 @@ import type {
 	IDataObject,
 	IHttpRequestMethods,
 	IRequestOptions,
-	JsonObject,
 } from 'n8n-workflow';
-import { NodeApiError } from 'n8n-workflow';
 
 export async function apiRequest(
 	this: IHookFunctions | IExecuteFunctions | ILoadOptionsFunctions,
