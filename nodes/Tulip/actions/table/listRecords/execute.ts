@@ -41,7 +41,7 @@ export async function execute(this: IExecuteFunctions, index: number): Promise<I
 		qs.sortOptions = JSON.stringify(formattedSortOptions);
 	}
 
-	//Get the full response because we need to get the 'X-Total-Count' header value if we passed includeTotalCount=true in the query string
+	// Get the full response because we need to get the 'X-Total-Count' header value if we passed includeTotalCount=true in the query string
 	const responseData = await apiRequest.call(this, requestMethod, endpoint, body, qs, resolveWithFullResponse);
 
 	// Get the total count from headers
