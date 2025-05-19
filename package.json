@@ -43,7 +43,7 @@
       "dist/credentials/TulipApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/TulipTables/TulipTables.node.js"
+      "dist/nodes/Tulip/Tulip.node.js"
     ]
   },
   "devDependencies": {
