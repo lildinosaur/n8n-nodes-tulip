@@ -4,19 +4,6 @@ import type { INodeProperties } from 'n8n-workflow';
 
 export const description: INodeProperties[] = [
 	{
-		displayName: 'Table ID',
-		name: 'tableId',
-		type: 'string',
-		default: '',
-		required: true,
-		displayOptions: {
-			show: {
-				resource: ['table'],
-				operation: ['createTable'],
-			},
-		},
-	},
-	{
 		displayName: 'Label',
 		name: 'tableLabel',
 		type: 'string',
@@ -43,7 +30,7 @@ export const description: INodeProperties[] = [
 		},
 	},
 	{
-		displayName: 'Colmumns',
+		displayName: 'Columns',
 		name: 'columns',
 		type: 'fixedCollection',
 		typeOptions: {
