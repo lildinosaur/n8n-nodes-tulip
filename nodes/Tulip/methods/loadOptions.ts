@@ -48,6 +48,7 @@ export async function getColumns(this: ILoadOptionsFunctions): Promise<INodeProp
 				returnData.push({
 						name: column.label as string,
 						value: column.name as string,
+						description: `Name: ${column.name}, Type: ${column.dataType.type}`,
 				});
 		}
 	}
